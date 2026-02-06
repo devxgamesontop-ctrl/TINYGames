@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TinyGames Studio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="pill">TinyGames Studio</span>
+      <h1>Play. Collect. Trade.</h1>
+      <p>
+        A clean, focused hub inspired by biggames.io — updates, games, and a simple value list in
+        one place.
+      </p>
+      <div class="hero-actions">
+        <a class="primary" href="#games">Explore games</a>
+        <a class="ghost" href="#values">View values</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h2>Live snapshot</h2>
+      <div class="stats">
+        <div>
+          <p class="label">Players online</p>
+          <p class="value" id="playersOnline">--</p>
+        </div>
+        <div>
+          <p class="label">Weekly updates</p>
+          <p class="value" id="weeklyUpdates">--</p>
+        </div>
+        <div>
+          <p class="label">Value items</p>
+          <p class="value" id="valueItems">--</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="updates" class="section">
+      <div class="section-header">
+        <h2>Updates</h2>
+        <p>Short patch notes and creator highlights.</p>
+      </div>
+      <div id="updateGrid" class="grid"></div>
+    </section>
+
+    <section id="games" class="section">
+      <div class="section-header">
+        <h2>Games</h2>
+        <p>Curated experiences with a focus on quality and replay.</p>
+      </div>
+      <div id="gameGrid" class="grid"></div>
+    </section>
+
+    <section id="values" class="section">
+      <div class="section-header">
+        <div>
+          <h2>Value list</h2>
+          <p>Simple market view for top collectibles.</p>
+        </div>
+        <select id="valueSort" aria-label="Sort values">
+          <option value="desc">Highest value</option>
+          <option value="asc">Lowest value</option>
+        </select>
+      </div>
+      <div id="valueGrid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2024 TinyGames Studio. Built for fast play and clean trades.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
