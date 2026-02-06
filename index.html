@@ -3,79 +3,116 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TinyGames Studio</title>
+  <title>TinyGames Hub</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <span class="pill">TinyGames Studio</span>
-      <h1>Play. Collect. Trade.</h1>
-      <p>
-        A clean, focused hub inspired by biggames.io — updates, games, and a simple value list in
-        one place.
-      </p>
-      <div class="hero-actions">
-        <a class="primary" href="#games">Explore games</a>
-        <a class="ghost" href="#values">View values</a>
+  <header class="site-header">
+    <nav class="nav">
+      <div class="logo">Tiny<span>Games</span></div>
+      <div class="nav-links">
+        <button class="nav-link active" data-section="updates">Updates</button>
+        <button class="nav-link" data-section="games">Games</button>
+        <button class="nav-link" data-section="values">Value List</button>
       </div>
-    </div>
-    <div class="hero-card">
-      <h2>Live snapshot</h2>
-      <div class="stats">
-        <div>
-          <p class="label">Players online</p>
-          <p class="value" id="playersOnline">--</p>
-        </div>
-        <div>
-          <p class="label">Weekly updates</p>
-          <p class="value" id="weeklyUpdates">--</p>
-        </div>
-        <div>
-          <p class="label">Value items</p>
-          <p class="value" id="valueItems">--</p>
+      <button id="themeToggle" class="ghost">Toggle Glow</button>
+    </nav>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Big energy. Tiny footprint.</p>
+        <h1>All of TinyGames, one launchpad.</h1>
+        <p>
+          Track weekly updates, discover new experiences, and explore the value database
+          for every collectible in our universe.
+        </p>
+        <div class="hero-actions">
+          <button class="primary" data-section="games">Play now</button>
+          <button class="ghost" data-section="values">Explore values</button>
         </div>
       </div>
-    </div>
+      <div class="hero-card">
+        <h3>Live status</h3>
+        <div class="stat-grid">
+          <div>
+            <p class="stat-label">Active players</p>
+            <p class="stat-value" id="activePlayers">--</p>
+          </div>
+          <div>
+            <p class="stat-label">Updates this month</p>
+            <p class="stat-value" id="monthlyUpdates">--</p>
+          </div>
+          <div>
+            <p class="stat-label">Value entries</p>
+            <p class="stat-value" id="valueCount">--</p>
+          </div>
+        </div>
+        <div class="ticker" id="liveTicker"></div>
+      </div>
+    </section>
   </header>
 
   <main>
-    <section id="updates" class="section">
-      <div class="section-header">
-        <h2>Updates</h2>
-        <p>Short patch notes and creator highlights.</p>
+    <section id="updates" class="section active">
+      <div class="section-heading">
+        <h2>Update blog</h2>
+        <p>Patch notes, sneak peeks, and creator highlights.</p>
       </div>
-      <div id="updateGrid" class="grid"></div>
+      <div class="filters">
+        <input type="search" id="updateSearch" placeholder="Search updates..." />
+        <select id="updateTag">
+          <option value="all">All tags</option>
+        </select>
+      </div>
+      <div id="updateGrid" class="card-grid"></div>
     </section>
 
     <section id="games" class="section">
-      <div class="section-header">
+      <div class="section-heading">
         <h2>Games</h2>
-        <p>Curated experiences with a focus on quality and replay.</p>
+        <p>Jump straight into the most popular TinyGames worlds.</p>
       </div>
-      <div id="gameGrid" class="grid"></div>
+      <div class="filters">
+        <input type="search" id="gameSearch" placeholder="Search games..." />
+        <select id="gameGenre">
+          <option value="all">All genres</option>
+        </select>
+        <button id="shuffleGames" class="ghost">Shuffle picks</button>
+      </div>
+      <div id="gameGrid" class="card-grid"></div>
     </section>
 
     <section id="values" class="section">
-      <div class="section-header">
-        <div>
-          <h2>Value list</h2>
-          <p>Simple market view for top collectibles.</p>
-        </div>
-        <select id="valueSort" aria-label="Sort values">
+      <div class="section-heading">
+        <h2>Value list database</h2>
+        <p>Browse the entire collection with live-ish values and demand metrics.</p>
+      </div>
+      <div class="filters">
+        <input type="search" id="valueSearch" placeholder="Search collectibles..." />
+        <select id="valueRarity">
+          <option value="all">All rarities</option>
+        </select>
+        <select id="valueSort">
           <option value="desc">Highest value</option>
           <option value="asc">Lowest value</option>
+          <option value="demand">Highest demand</option>
         </select>
       </div>
-      <div id="valueGrid" class="grid"></div>
+      <div id="valueGrid" class="card-grid"></div>
     </section>
   </main>
 
+  <div id="valueModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close" id="closeModal">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
   <footer class="footer">
-    <p>© 2024 TinyGames Studio. Built for fast play and clean trades.</p>
+    <p>© 2024 TinyGames. Built for fun, balance, and big-game vibes.</p>
   </footer>
 
   <script src="script.js"></script>
